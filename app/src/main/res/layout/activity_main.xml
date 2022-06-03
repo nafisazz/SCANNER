@@ -1,107 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <xyz.sahildave.arclayout.ArcLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/arc_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_260sdp"
-        app:arc_height="48dp"
-        app:arc_position="bottom">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/main"
-            android:orientation="vertical" />
-
-    </xyz.sahildave.arclayout.ArcLayout>
-
-
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="@dimen/_25sdp"
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_280sdp"
-        android:layout_centerHorizontal="true"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/popsem"
+        android:text="Daftar Barang"
         android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_100sdp"
         android:layout_marginRight="@dimen/_16sdp"
-        android:elevation="@dimen/_20sdp"
-        android:foregroundGravity="center"
-        android:padding="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
 
-        app:cardUseCompatPadding="true"
-
-
-        >
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_150sdp"
-                android:layout_marginLeft="@dimen/_45sdp"
-
-                android:layout_marginTop="@dimen/_25sdp"
-                android:layout_marginBottom="@dimen/_25sdp"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/img" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:background="@drawable/bg_btn"
-                android:onClick="scan"
-                android:text="Scan QR Code"
-                android:textSize="@dimen/_15sdp" />
+        />
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcylrBarang"
+        android:padding="@dimen/_16sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Scanner"
+        android:onClick="scanner"
+        android:fontFamily="@font/popsem"
+        android:textSize="@dimen/_11sdp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Tambah Data Barang"
+        android:onClick="addData"
+        android:fontFamily="@font/popsem"
+        android:textSize="@dimen/_10sdp"
+        />
 
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/main"
-            app:fabAlignmentMode="center"
-            app:fabCradleMargin="@dimen/_8sdp"
-            app:fabCradleVerticalOffset="@dimen/_5sdp"
-            app:hideOnScroll="true" />
+</androidx.appcompat.widget.LinearLayoutCompat>
 
-       <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_scan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_scanner"
-            android:tint="@color/white"
-            app:backgroundTint="@color/white"
-            app:layout_anchor="@id/bottomAppBar" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
-
-</RelativeLayout>
