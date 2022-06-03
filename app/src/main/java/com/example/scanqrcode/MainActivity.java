@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
-        scan=findViewById(R.id.btn_scan);
 
         // Mengatur warna tint fab
 

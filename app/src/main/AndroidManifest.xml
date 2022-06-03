@@ -10,22 +10,28 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_icon"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanQRCode">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".MediaBarcode"
+            android:exported="false" />
+        <activity
+            android:name=".ScanQrCode"
+            android:exported="true" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
 
         </activity>
-
     </application>
 
 </manifest>

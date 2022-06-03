@@ -13,6 +13,9 @@
         <entry key="..\:/ScanQRCode/app/src/main/res/drawable/ic_scanner.xml" value="0.35188968335035753" />
         <entry key="..\:/ScanQRCode/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/ScanQRCode/app/src/main/res/layout/activity_splash_screen.xml" value="0.19519927536231885" />
+        <entry key="..\:/nafisaa/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/nafisaa/app/src/main/res/layout/activity_media_barcode.xml" value="0.34322916666666664" />
+        <entry key="..\:/nafisaa/app/src/main/res/layout/activity_scan_qr_code.xml" value="0.34322916666666664" />
       </map>
     </option>
   </component>
