@@ -5,24 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main"
     tools:context=".MainActivity">
 
-    <xyz.sahildave.arclayout.ArcLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/arc_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_260sdp"
-        app:arc_height="48dp"
-        app:arc_position="bottom">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/main"
-            android:orientation="vertical" />
-
-    </xyz.sahildave.arclayout.ArcLayout>
 
 
     <androidx.cardview.widget.CardView
@@ -50,10 +35,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_150sdp"
-                android:layout_marginLeft="@dimen/_45sdp"
-
                 android:layout_marginTop="@dimen/_25sdp"
                 android:layout_marginBottom="@dimen/_25sdp"
+                android:layout_gravity="center_horizontal"
                 android:padding="@dimen/_5sdp"
                 android:src="@drawable/img" />
 
