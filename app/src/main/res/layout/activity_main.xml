@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,26 +28,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.button.MaterialButton
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/tambah_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="-60dp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:rotation="90"
+            android:layout_gravity="end"
+            android:onClick="addData"
+            android:text="Tambah Barang"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:backgroundTint="@color/main"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@android:color/white" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/sccannr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Scanner"
+        android:text="Scanner Qr Code"
         android:onClick="scanner"
-        android:fontFamily="@font/popsem"
-        android:textSize="@dimen/_11sdp"
-        />
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Tambah Data Barang"
-        android:onClick="addData"
-        android:fontFamily="@font/popsem"
-        android:textSize="@dimen/_10sdp"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:backgroundTint="@color/main"
+        app:icon="@drawable/ic_code_scanner"
+        app:iconTint="@android:color/white" />
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+</RelativeLayout>
 
