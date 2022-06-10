@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/main"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,20 +14,32 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/popsem"
         android:text="Daftar Barang"
+        android:id="@+id/tv_daftar"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginRight="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_16sdp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="@dimen/_13sdp"
 
         />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcylrBarang"
-        android:padding="@dimen/_16sdp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:background="@drawable/container2"
+        android:layout_below="@+id/tv_daftar"
+        android:layout_marginTop="@dimen/_10sdp"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcylrBarang"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_16sdp" />
+    </RelativeLayout>
+
+
+
 
 
 
