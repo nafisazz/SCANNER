@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 
 import org.json.JSONArray;
@@ -24,6 +26,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -34,6 +39,11 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     String nama="";
     String harga = "";
 
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Daftar Barang");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +52,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
         setContentView(mScannerView);
 
         cameraPermission(); //meminta permission untuk menggunakan camera
+
     }
 
     private void cameraPermission() {
@@ -77,7 +88,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     // Method untuk memanggil data barang
 
     private void getDataBarang(String result){
-        String url="http://192.168.3.102/qrcode/cari_qrcode.php?kode="+result; // Ganti pake API mu
+        String url="http://192.168.3.101/qrcode/cari_qrcode.php?kode="+result;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.PUT,url,null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -88,13 +99,17 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
 
 
                                 JSONObject jsonobject = jsonArray.getJSONObject(i);
-
                                 kode = jsonobject.getString("kode");
                                 nama = jsonobject.getString("nama_barang");
                                 harga = jsonobject.getString("harga");
 
+                                // Mengambil tanggal dan waktu saat ini
+
+
+
                                 AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
                                 alertDialog.setTitle("Hasil Scanning");
+                                //alertDialog.setIcon(R.drawable.qr_code2);
                                 DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
                                 alertDialog.setMessage("Kode Barcode : " + kode + "\nNama Barang : " + nama + "\nHarga Barang : " + decimalFormat.format(Double.parseDouble(harga)));
 
@@ -102,6 +117,8 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
+                                                tambahData(kode, nama, harga);
+
                                                 finish();
                                             }
                                         });
@@ -123,6 +140,17 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
+    }
+
+
+    private void tambahData(String kode, String nama, String harga ) {
+        String key = myRef.push().getKey();
+
+        myRef.child(key).child("kode").setValue(kode);
+        myRef.child(key).child("nama").setValue(nama);
+        myRef.child(key).child("harga").setValue(harga);
+
+        Toast.makeText(MediaBarcode.this, "Berhasil menambahkan data ke firebase", Toast.LENGTH_LONG).show();
     }
 
 }

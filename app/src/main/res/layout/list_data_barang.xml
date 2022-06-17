@@ -39,6 +39,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="B0001"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/popmed"
                     android:textSize="@dimen/_10sdp" />
 
@@ -48,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_weight="1"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/popmed"
                     android:text="5000"
                     android:textSize="@dimen/_10sdp" />
