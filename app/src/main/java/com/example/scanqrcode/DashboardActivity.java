@@ -1,5 +1,6 @@
 package com.example.scanqrcode;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,7 +26,12 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         btn_exit.setOnClickListener(view -> {
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
+            builder.setTitle("Keluar Aplikasi");
+            builder.setMessage("Apakah anda yakin ingin keluar dari aplikasi ini?");
+            builder.setPositiveButton("Ya", (dialog, which) -> finish());
+            builder.setNegativeButton("Tidak", (dialog, which) -> dialog.dismiss());
+            builder.show();
         });
 
         btn_product.setOnClickListener(view -> {
