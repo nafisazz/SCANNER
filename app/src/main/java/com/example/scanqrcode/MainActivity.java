@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ScanQrCode.class));
     }
 
-    public void addData(View view) {
-        startActivity(new Intent(MainActivity.this, TambahBarang.class));
-    }
+
 }
 

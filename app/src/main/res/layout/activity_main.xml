@@ -26,10 +26,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/container2"
         android:layout_below="@+id/tv_daftar"
         android:layout_marginTop="@dimen/_10sdp"
-        >
+        android:background="@drawable/container2">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcylrBarang"
@@ -40,38 +39,22 @@
     </RelativeLayout>
 
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/tambah_barang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="-60dp"
-            android:layout_marginRight="@dimen/_16sdp"
-            android:rotation="90"
-            android:layout_gravity="end"
-            android:onClick="addData"
-            android:text="Tambah Barang"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            app:backgroundTint="@color/main"
-            app:icon="@drawable/ic_add"
-            app:iconTint="@android:color/white" />
+
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/sccannr"
+        android:id="@+id/tambah_barang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scanner Qr Code"
-        android:onClick="scanner"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_30sdp"
+        android:onClick="scanner"
+        android:text="Tambah Barang"
         android:textColor="@android:color/white"
         android:textSize="12sp"
         app:backgroundTint="@color/main"
-        app:icon="@drawable/ic_code_scanner"
+        app:icon="@drawable/ic_add"
         app:iconTint="@android:color/white" />
 
 
