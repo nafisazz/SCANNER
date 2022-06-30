@@ -39,8 +39,6 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     String nama="";
     String harga = "";
 
-
-
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Daftar Barang");
 

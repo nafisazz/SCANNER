@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ScanQRCode"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".TambahBarang"
             android:exported="false" />
         <activity
@@ -22,13 +25,10 @@
             android:exported="false" />
         <activity
             android:name=".ScanQrCode"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
