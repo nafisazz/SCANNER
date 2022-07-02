@@ -86,7 +86,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     // Method untuk memanggil data barang
 
     private void getDataBarang(String result){
-        String url="http://192.168.3.101/qrcode/cari_qrcode.php?kode="+result;
+        String url="http://192.168.3.103/qrcode/cari_qrcode.php?kode="+result;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.PUT,url,null,
                 new Response.Listener<JSONArray>() {
                     @Override
