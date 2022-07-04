@@ -34,7 +34,6 @@ public class TransaksiActivity extends AppCompatActivity  {
     RecyclerView recyclerView;
     FloatingActionButton fabAdd;
     private ImageButton btnBack;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
     private ShimmerRecyclerView mShimmerRecyclerView;
 
     @Override
@@ -51,17 +50,11 @@ public class TransaksiActivity extends AppCompatActivity  {
         initilize();
 
         // Mengatur warna tint fab
+        fabAdd.setBackgroundTintList(getResources().getColorStateList(R.color.white));
 
 
 
 
-
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshItem();
-            }
-        });
 
         setmShimmerRecyclerView();
 
@@ -98,7 +91,7 @@ public class TransaksiActivity extends AppCompatActivity  {
                 transaksiModelList = response.body();
                 adapterTrans = new AdapterTransaksi(TransaksiActivity.this, transaksiModelList);
                 mShimmerRecyclerView.setAdapter(adapterTrans);
-                mSwipeRefreshLayout.setRefreshing(false);
+
             }
 
 
@@ -108,7 +101,7 @@ public class TransaksiActivity extends AppCompatActivity  {
                 // Menampilkan toast saat no connection
 
                 Toast.makeText(TransaksiActivity.this, "No connection, please try again", Toast.LENGTH_LONG).show();
-                mSwipeRefreshLayout.setRefreshing(false);
+
 
             }
         });
@@ -123,7 +116,6 @@ public class TransaksiActivity extends AppCompatActivity  {
 
     private void initilize() {
         fabAdd = findViewById(R.id.btn_scanner);
-        mSwipeRefreshLayout = findViewById(R.id.swipeRefresh2);
         mShimmerRecyclerView = findViewById(R.id.rcylrBarang2);
     }
 

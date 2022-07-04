@@ -7,6 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".TransaksiActivity">
 
+    <xyz.sahildave.arclayout.ArcLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arc_cropCurve="cropConvex"
+        app:arc_height="48dp"
+        app:arc_position="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@color/main"
+            />
+
+        <!-- YOUR CONTENT -->
+
+    </xyz.sahildave.arclayout.ArcLayout>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -16,65 +32,46 @@
 
 
 
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/popsem"
-                android:text="Klik atau scan barang"
                 android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:fontFamily="@font/popsem"
+                android:text="Scan qrcode atau klik untuk melakukan transaksi"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
 
                 />
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipeRefresh2"
+
+            <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/rcylrBarang2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-
-                <com.todkars.shimmer.ShimmerRecyclerView
-                    android:padding="@dimen/_20sdp"
-                    android:id="@+id/rcylrBarang2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:shimmer_recycler_layout="@layout/list_data_barang_transaksi"
-                    app:shimmer_recycler_item_count="10"
-                    />
-
-
-
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
+                android:padding="@dimen/_16sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_scanner"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_40sdp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/_16sdp"
+        app:backgroundTint="@color/main"
+        app:iconTint="@android:color/white"
         android:layout_marginBottom="@dimen/_16sdp"
-        app:iconSize="@dimen/_15sdp"
-        android:src="@drawable/ic_baseline_camera_alt_24"
-        />
+        android:src="@drawable/ic_baseline_camera_alt_24" />
 
 
 </RelativeLayout>
