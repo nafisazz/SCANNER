@@ -25,11 +25,15 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(new Intent(DashboardActivity.this, AboutActivity.class));
         });
 
+        btn_transaksi.setOnClickListener(view -> {
+            startActivity(new Intent(DashboardActivity.this, TransaksiActivity.class));
+        });
+
         btn_exit.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
             builder.setTitle("Keluar Aplikasi");
             builder.setMessage("Apakah anda yakin ingin keluar dari aplikasi ini?");
-            builder.setPositiveButton("Ya", (dialog, which) -> finish());
+            builder.setPositiveButton("Ya", (dialog, which) -> System.exit(1));
             builder.setNegativeButton("Tidak", (dialog, which) -> dialog.dismiss());
             builder.show();
         });
