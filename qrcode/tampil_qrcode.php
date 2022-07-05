@@ -1,11 +1,12 @@
 <?php
 
-
 $sumber = 'http://localhost/qrcode';
-include 'qrcode.php';
+// include 'qrcode.php';
 
 $konten = file_get_contents($sumber);
 $data = json_decode($konten, true);
+
+
 
 ?>
 
@@ -70,10 +71,12 @@ $data = json_decode($konten, true);
 
                     <tr>
                         <th>No</th>
-                        <th>Barcode</th>
-                        <th>Kode</th>
+                        <th>QR Code</th>
+                        <th>Kode Barang</th>
                         <th>Nama Barang</th>
                         <th>Harga</th>
+                        <th>Satuan</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
 
@@ -87,8 +90,25 @@ $data = json_decode($konten, true);
         $xkode = $data[$a]['kode'];
         echo "<tr>";
         echo "<td>$no</td>";
+
+
+
     ?>
-        <td><img src="qrcode.php?s=qr&d=<?= $xkode; ?>" alt="QRCODE" width="150px"></td>
+
+        <?php
+        require_once('phpqrcode/qrlib.php');
+        $nama = $xkode;
+        $namafile = $nama . '.png';
+        $tempDir = 'qr/';
+        $pngAbsoluteFilePath = $tempDir . $namafile;
+        $content = $xkode;
+        $urlRelativeFilePath = $pngAbsoluteFilePath;
+        if (!file_exists($pngAbsoluteFilePath)) {
+            QRcode::png($content, $pngAbsoluteFilePath);
+        }
+
+        echo "<td><img src='qr/$namafile' alt='QRCODE' width='150px'></td>";
+        ?>
 
 
 
@@ -97,7 +117,8 @@ $data = json_decode($konten, true);
         echo "<td>" . $data[$a]['kode'] . "</td>";
         echo "<td>" . $data[$a]['nama_barang'] . "</td>";
         echo "<td>" . $data[$a]['harga'] . "</td>";
-        echo "</tr>";
+        echo "<td>" . $data[$a]['satuan'] . "</td>";
+        echo "<td>" . $data[$a]['jumlah'] . "</td>";
     }
     ?>
     </Table>
