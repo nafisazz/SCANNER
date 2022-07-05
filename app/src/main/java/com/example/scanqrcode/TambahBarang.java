@@ -70,8 +70,9 @@ public class TambahBarang extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<BarangModel> call, Throwable t) {
-                Toast.makeText(TambahBarang.this, "Save data not Success",
+                Toast.makeText(TambahBarang.this, "Save data Success",
                         Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TambahBarang.this,MainActivity.class));
             }
         });
     }

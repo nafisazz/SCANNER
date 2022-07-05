@@ -6,48 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_about"
     tools:context=".AboutActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="About Me"
-            android:fontFamily="@font/popsem"
-            android:textSize="@dimen/_20sdp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nafisa AZ-ZAHRA"
-            android:fontFamily="@font/popsem"
-            android:textSize="@dimen/_13sdp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A22.2020.02834"
-            android:fontFamily="@font/popsem"
-            android:textSize="@dimen/_13sdp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
-            />
 
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
