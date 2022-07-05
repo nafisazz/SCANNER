@@ -18,8 +18,12 @@ public interface InterfaceBarang {
     @FormUrlEncoded
     @POST("qrcode/")
     Call<BarangModel> postBarang(@Field("kode") String kode,
-                            @Field("nama") String nama_barang,
-                            @Field("harga") String harga);
+                                 @Field("nama_barang") String nama,
+                                 @Field("harga") String harga,
+                                 @Field("jumlah") String jumlah,
+                                 @Field("satuan") String satuan);
+
+
     @DELETE("qrcode/")
     Call<BarangModel> deleteBarang(@Query("kode") String kode);
 }

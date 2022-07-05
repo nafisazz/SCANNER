@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -38,9 +39,10 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     String kode = "";
     String nama="";
     String harga = "";
+    String jumlah = "";
+    String satuan = "";
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Daftar Barang");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     // Method untuk memanggil data barang
 
     private void getDataBarang(String result){
-        String url="http://192.168.3.103/qrcode/cari_qrcode.php?kode="+result;
+        String url="http://172.20.10.3/qrcode/cari_qrcode.php?kode="+result; // Ganti dengan IP address komputer kalian
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.PUT,url,null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -100,27 +102,19 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
                                 kode = jsonobject.getString("kode");
                                 nama = jsonobject.getString("nama_barang");
                                 harga = jsonobject.getString("harga");
+                                jumlah = jsonobject.getString("jumlah");
+                                satuan = jsonobject.getString("satuan");
 
-                                // Mengambil tanggal dan waktu saat ini
+
+                                Intent intent = new Intent(MediaBarcode.this, PenjualanActivity.class);
+                                intent.putExtra("kd_brg2", kode);
+                                intent.putExtra("nm_brg2", nama);
+                                intent.putExtra("hrg_brg2", harga);
+                                intent.putExtra("jml_brg2", jumlah);
+                                intent.putExtra("satuan_brg2", satuan);
+                                startActivity(intent);
 
 
-
-                                AlertDialog alertDialog = new AlertDialog.Builder(MediaBarcode.this).create();
-                                alertDialog.setTitle("Hasil Scanning");
-                                //alertDialog.setIcon(R.drawable.qr_code2);
-                                DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-                                alertDialog.setMessage("Kode Barcode : " + kode + "\nNama Barang : " + nama + "\nHarga Barang : " + decimalFormat.format(Double.parseDouble(harga)));
-
-                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                                tambahData(kode, nama, harga);
-
-                                                finish();
-                                            }
-                                        });
-                                alertDialog.show();
                                 Toast.makeText(MediaBarcode.this, "Barang ditemukan: "+nama, Toast.LENGTH_SHORT).show();
 
 
@@ -140,15 +134,5 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
         requestQueue.add(jsonArrayRequest);
     }
 
-
-    private void tambahData(String kode, String nama, String harga ) {
-        String key = myRef.push().getKey();
-
-        myRef.child(key).child("kode").setValue(kode);
-        myRef.child(key).child("nama").setValue(nama);
-        myRef.child(key).child("harga").setValue(harga);
-
-        Toast.makeText(MediaBarcode.this, "Berhasil menambahkan data ke firebase", Toast.LENGTH_LONG).show();
-    }
 
 }

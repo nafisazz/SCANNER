@@ -18,7 +18,7 @@ public interface InterfaceTransaksi {
     @FormUrlEncoded
     @POST("qrcode/transaksi.php")
     Call<TransaksiModel> simpanPenjualan(@Field("kode") String kode,
-                                 @Field("jumlah") String jumlah);
+                                         @Field("jumlah") String jumlah);
 
     @DELETE("qrcode/")
     Call<TransaksiModel> deleteBarang(@Query("kode") String kode);
