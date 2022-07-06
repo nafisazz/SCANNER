@@ -151,7 +151,15 @@
             android:textSize="@dimen/_17sdp"
             android:fontFamily="@font/popmed" />
 
-
+        <TextView
+            android:id="@+id/tv_total2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="total"
+            android:ems="10"
+            android:textColor="@color/main"
+            android:textSize="@dimen/_17sdp"
+            android:fontFamily="@font/popmed" />
 
     </LinearLayout>
 
