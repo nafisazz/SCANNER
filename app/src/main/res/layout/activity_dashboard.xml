@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:arc_cropCurve="cropConvex"
-        app:arc_height="48dp"
+        app:arc_height="1dp"
         app:arc_position="bottom">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_height="@dimen/_130sdp"
             android:background="@color/main"
             />
 
@@ -29,12 +29,22 @@
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/popsem"
         android:text="Menu Utama"
         android:layout_marginLeft="@dimen/_16sdp"
         android:textColor="@color/white"
-        android:textSize="@dimen/_14sdp" />
+        android:textSize="@dimen/_20sdp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_1"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Aplikasi Scanner Barang"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13sdp"
+        android:fontFamily="@font/popsem"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

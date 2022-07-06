@@ -55,6 +55,7 @@ public class TambahBarang extends AppCompatActivity {
 
         tambahData(kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_brg);
 
+        // retrofit
         Call<BarangModel> postBarang = interfaceBarang.postBarang(kode_brg,
                 nama_brg, harga_brg, jumlah_brg, satuan_brg);
         postBarang.enqueue(new Callback<BarangModel>() {
@@ -77,7 +78,7 @@ public class TambahBarang extends AppCompatActivity {
         });
     }
 
-
+    //method firebase
     private void tambahData(String kode, String nama, String harga, String jumlah, String satuan) {
         String barang = refBarang.push().getKey();
 

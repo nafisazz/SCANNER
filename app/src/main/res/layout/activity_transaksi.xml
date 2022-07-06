@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:arc_cropCurve="cropConvex"
-        app:arc_height="48dp"
+        app:arc_height="1dp"
         app:arc_position="bottom">
 
         <RelativeLayout
@@ -31,32 +31,40 @@
         android:orientation="vertical">
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:fontFamily="@font/popsem"
+            android:text="TAMPILAN SCAN"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
-                android:fontFamily="@font/popsem"
-                android:text="Scan qrcode atau klik untuk melakukan transaksi"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_13sdp"
-
-                />
-
-
-            <com.todkars.shimmer.ShimmerRecyclerView
-                android:id="@+id/rcylrBarang2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_16sdp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text=" klik untuk melakukan transaksi"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:fontFamily="@font/popsem"
+            android:textColor="@color/white" />
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.todkars.shimmer.ShimmerRecyclerView
+            android:id="@+id/rcylrBarang2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_16sdp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 

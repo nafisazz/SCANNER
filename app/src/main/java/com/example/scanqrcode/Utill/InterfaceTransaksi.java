@@ -13,6 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface InterfaceTransaksi {
+    // get untuk menganbil data
     @GET("qrcode/")
     Call<List<TransaksiModel>> getBarang2();
     @FormUrlEncoded

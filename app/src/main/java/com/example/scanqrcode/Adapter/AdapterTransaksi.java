@@ -51,8 +51,9 @@ public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyVi
         holder.jml_brg2.setText(transaksiModels.get(position).getJumlah());
         holder.satuan_brg2.setText(transaksiModels.get(position).getSatuan());
 
+            //menapilkan gbr barcode
         Glide.with(context)
-                .load("http://192.168.3.103/qrcode/qr/"+transaksiModels.get(position).getKode()+".png")
+                .load("http://192.168.238.178/qrcode/qr/"+transaksiModels.get(position).getKode()+".png")
                 .thumbnail(0.5f)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.img_brg2);
@@ -74,7 +75,7 @@ public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyVi
 
 
 
-
+    // agar barng bisa di klik
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView kd_brg2,nm_brg2,hrg_brg2, jml_brg2, satuan_brg2;
         ImageView img_brg2;
