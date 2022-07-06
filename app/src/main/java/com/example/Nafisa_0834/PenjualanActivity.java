@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -27,8 +30,10 @@ public class PenjualanActivity extends AppCompatActivity {
     EditText hrg_brg;
     EditText jml_brg;
     EditText satuan_brg;
-    Integer total;
-    String kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_barg, tanggal, waktu;
+    EditText jumlah_penjualan;
+    Integer total, jumlahPenjualan, totalBarang;
+    TextView tv_total;
+    String kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_barg, tanggal, waktu, jmlPenjualan;
 
     Button save;
 
@@ -53,6 +58,8 @@ public class PenjualanActivity extends AppCompatActivity {
         jml_brg.setText(intent.getStringExtra("jml_brg2"));
         satuan_brg.setText(intent.getStringExtra("satuan_brg2"));
 
+
+
         getDateTime();
 
         // Disable Edittext
@@ -66,8 +73,45 @@ public class PenjualanActivity extends AppCompatActivity {
         harga_brg = hrg_brg.getText().toString();
         jumlah_brg = jml_brg.getText().toString();
         satuan_barg = satuan_brg.getText().toString();
+        jmlPenjualan = jumlah_penjualan.getText().toString();
 
-        total = (Integer.parseInt(jumlah_brg) ) - 1 ;
+
+        // menghitung total
+
+//        total_keseluruhan = Integer.parseInt(jmlPenjualan) * Integer.parseInt(harga_brg);
+
+//        total = (Integer.parseInt(jumlah_brg) ) - 1 ;
+
+        tv_total = findViewById(R.id.tv_total);
+//        tv_total.setText(total_keseluruhan.toString());
+
+        jumlah_penjualan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (jumlah_penjualan.getText().toString().equals("")){
+                    total = 0;
+                    totalBarang = 0;
+                } else {
+                    jumlahPenjualan = Integer.parseInt(jumlah_penjualan.getText().toString());
+                    totalBarang = Integer.parseInt(jml_brg.getText().toString())  - jumlahPenjualan;
+
+
+                    total = jumlahPenjualan * Integer.parseInt(hrg_brg.getText().toString());
+                }
+                tv_total.setText(String.valueOf(total));
+                jml_brg.setText(String.valueOf(totalBarang));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -94,6 +138,8 @@ public class PenjualanActivity extends AppCompatActivity {
         jml_brg = findViewById(R.id.inJumlahBrg);
         satuan_brg = findViewById(R.id.inSatuanBrg);
         save = findViewById(R.id.btnSave);
+        tv_total = findViewById(R.id.tv_total);
+        jumlah_penjualan = findViewById(R.id.inJumlahPenjualan);
     }
 
     public void simpandata(View view) {
@@ -103,7 +149,7 @@ public class PenjualanActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     // Memanggil method simpan ke firebase
-                    simpanPenjualan(kode_brg, nama_brg, harga_brg, total, satuan_barg, tanggal, waktu);
+                    simpanPenjualan(kode_brg, nama_brg, harga_brg, totalBarang, total, satuan_barg, tanggal, waktu);
 
                     Toast.makeText(PenjualanActivity.this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PenjualanActivity.this, TransaksiActivity.class));
@@ -123,13 +169,14 @@ public class PenjualanActivity extends AppCompatActivity {
 
     // Method simpan data ke dalam firebase
 
-    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, Integer total, String satuan_barg, String tanggal, String waktu) {
+    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, Integer total, Integer totalPembelian, String satuan_barg,  String tanggal, String waktu) {
         String penjualan = refPenjualan.push().getKey();
 
         refPenjualan.child(penjualan).child("kode").setValue(kode_brg);
         refPenjualan.child(penjualan).child("nama").setValue(nama_brg);
         refPenjualan.child(penjualan).child("harga").setValue(harga_brg);
-        refPenjualan.child(penjualan).child("jumlah").setValue(total);
+        refPenjualan.child(penjualan).child("Stok").setValue(total);
+        refPenjualan.child(penjualan).child("Total Pembelian").setValue(totalPembelian);
         refPenjualan.child(penjualan).child("satuan").setValue(satuan_barg);
         refPenjualan.child(penjualan).child("tanggal").setValue(tanggal);
         refPenjualan.child(penjualan).child("waktu").setValue(waktu);

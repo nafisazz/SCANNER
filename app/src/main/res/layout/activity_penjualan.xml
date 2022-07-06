@@ -83,6 +83,25 @@
             android:layout_height="wrap_content"
             android:text="Jumlah:"
             android:textSize="17sp"
+            android:textColor="@color/main"
+            android:fontFamily="@font/popmed"
+            />
+
+        <EditText
+            android:id="@+id/inJumlahPenjualan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="17sp"
+
+            android:fontFamily="@font/popmed"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stok:"
+            android:textSize="17sp"
             android:fontFamily="@font/popmed"
             />
 
@@ -90,11 +109,13 @@
             android:id="@+id/inJumlahBrg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:editable="false"
             android:ems="10"
+            android:editable="false"
             android:textSize="17sp"
             android:fontFamily="@font/popmed"
             android:inputType="textPersonName" />
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -112,6 +133,24 @@
             android:ems="10"
             android:textSize="17sp"
             android:fontFamily="@font/popmed" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total:"
+            android:textSize="17sp"
+            android:fontFamily="@font/popmed"
+            />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="total"
+            android:ems="10"
+            android:textColor="@color/main"
+            android:textSize="@dimen/_17sdp"
+            android:fontFamily="@font/popmed" />
+
 
 
     </LinearLayout>

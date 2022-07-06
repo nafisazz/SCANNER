@@ -46,7 +46,7 @@ public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyVi
 
         holder.kd_brg2.setText(transaksiModels.get(position).getKode());
         holder.nm_brg2.setText(transaksiModels.get(position).getNama());
-        holder.hrg_brg2.setText(formatRupiah(Double.parseDouble(transaksiModels.get(position).getHarga())));
+        holder.hrg_brg2.setText(transaksiModels.get(position).getHarga());
         holder.jml_brg2.setText(transaksiModels.get(position).getJumlah());
         holder.satuan_brg2.setText(transaksiModels.get(position).getSatuan());
 
