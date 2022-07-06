@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Menghapus barang jika stok = 0
 
-    if ($jumlah == 0) {
+    if ($jumlah == 0 || $jumlah < 0) {
         $msql = "delete from data_barang where kode = ?";
         $stat = $conn->prepare($msql);
         $res = $stat->execute([$kode]);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mengurangi barang -1 jika telah dilakukan transaksi
 
     if ($jumlah != 0) {
-        $msql = "update data_barang set jumlah = jumlah - 1 where kode = ?";
+        $msql = "update data_barang set jumlah = $jumlah   where kode = ?";
         $stat = $conn->prepare($msql);
         $res = $stat->execute([$kode]);
         if ($res) {
