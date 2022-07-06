@@ -1,11 +1,11 @@
-package com.example.scanqrcode.Model;
+package com.example.Nafisa_0834;
 
-import com.example.scanqrcode.Utill.ServerAPI;
+import com.example.Nafisa_0834.ServerAPI;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class TransaksiModel implements Serializable {
+public class Transaksi implements Serializable {
     @SerializedName("kode")
     String kode;
     @SerializedName("nama_barang")
@@ -21,7 +21,7 @@ public class TransaksiModel implements Serializable {
 
 
 
-    public TransaksiModel(String kode, String nama, String harga, String image, String satuan, String jumlah) {
+    public Transaksi(String kode, String nama, String harga, String image, String satuan, String jumlah) {
         this.kode = kode;
         this.nama = nama;
         this.harga = harga;

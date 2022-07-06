@@ -1,4 +1,4 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.scanqrcode.Model.BarangModel;
-import com.example.scanqrcode.Utill.DataApi;
-import com.example.scanqrcode.Utill.InterfaceBarang;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -56,24 +53,24 @@ public class TambahBarang extends AppCompatActivity {
         tambahData(kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_brg);
 
         // retrofit
-        Call<BarangModel> postBarang = interfaceBarang.postBarang(kode_brg,
+        Call<Barang> postBarang = interfaceBarang.postBarang(kode_brg,
                 nama_brg, harga_brg, jumlah_brg, satuan_brg);
-        postBarang.enqueue(new Callback<BarangModel>() {
+        postBarang.enqueue(new Callback<Barang>() {
             @Override
-            public void onResponse(Call<BarangModel> call, Response<BarangModel>
+            public void onResponse(Call<Barang> call, Response<Barang>
                     response) {
                 Toast.makeText(TambahBarang.this, "Save data Success",
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(TambahBarang.this,MainActivity.class);
+                Intent intent = new Intent(TambahBarang.this, BarangActivity.class);
                 startActivity(intent);
 
 
             }
             @Override
-            public void onFailure(Call<BarangModel> call, Throwable t) {
+            public void onFailure(Call<Barang> call, Throwable t) {
                 Toast.makeText(TambahBarang.this, "Save data Success",
                         Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(TambahBarang.this,MainActivity.class));
+                startActivity(new Intent(TambahBarang.this, BarangActivity.class));
             }
         });
     }
@@ -92,7 +89,7 @@ public class TambahBarang extends AppCompatActivity {
 
 
     public void btnback(View view) {
-        startActivity(new Intent(TambahBarang.this,MainActivity.class));
+        startActivity(new Intent(TambahBarang.this, BarangActivity.class));
         finish();
     }
 }

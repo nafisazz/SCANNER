@@ -1,4 +1,4 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
-public class DashboardActivity extends AppCompatActivity {
+public class MenuUtamaActivity extends AppCompatActivity {
 
     ImageButton btn_product, btn_transaksi, btn_about, btn_exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_menu_utama);
 
         initlize();
         onClick();
@@ -22,15 +22,15 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void onClick() {
         btn_about.setOnClickListener(view -> {
-            startActivity(new Intent(DashboardActivity.this, AboutActivity.class));
+            startActivity(new Intent(MenuUtamaActivity.this, AboutActivity.class));
         });
 
         btn_transaksi.setOnClickListener(view -> {
-            startActivity(new Intent(DashboardActivity.this, TransaksiActivity.class));
+            startActivity(new Intent(MenuUtamaActivity.this, TransaksiActivity.class));
         });
 
         btn_exit.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MenuUtamaActivity.this);
             builder.setTitle("Keluar Aplikasi");
             builder.setMessage("Apakah anda yakin ingin keluar dari aplikasi ini?");
             builder.setPositiveButton("Ya", (dialog, which) -> System.exit(1));
@@ -39,7 +39,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         btn_product.setOnClickListener(view -> {
-            startActivity(new Intent(DashboardActivity.this, MainActivity.class));
+            startActivity(new Intent(MenuUtamaActivity.this, BarangActivity.class));
         });
     }
 

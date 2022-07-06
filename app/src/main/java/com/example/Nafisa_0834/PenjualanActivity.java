@@ -1,4 +1,4 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.scanqrcode.Model.TransaksiModel;
-import com.example.scanqrcode.Utill.DataApi;
-import com.example.scanqrcode.Utill.InterfaceTransaksi;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -97,9 +94,9 @@ public class PenjualanActivity extends AppCompatActivity {
     }
 
     public void simpandata(View view) {
-        DataApi.getClient().create(InterfaceTransaksi.class).simpanPenjualan(kode_brg, jumlah_brg).enqueue(new Callback<TransaksiModel>() {
+        DataApi.getClient().create(InterfaceTransaksi.class).simpanPenjualan(kode_brg, jumlah_brg).enqueue(new Callback<Transaksi>() {
             @Override
-            public void onResponse(Call<TransaksiModel> call, Response<TransaksiModel> response) {
+            public void onResponse(Call<Transaksi> call, Response<Transaksi> response) {
                 if (response.isSuccessful()) {
 
                     // Memanggil method simpan ke firebase
@@ -113,7 +110,7 @@ public class PenjualanActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<TransaksiModel> call, Throwable t) {
+            public void onFailure(Call<Transaksi> call, Throwable t) {
                 Toast.makeText(PenjualanActivity.this, "Cek koneksi internet anda", Toast.LENGTH_SHORT).show();
             }
         });

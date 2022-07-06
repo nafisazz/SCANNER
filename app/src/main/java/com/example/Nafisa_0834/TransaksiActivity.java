@@ -1,21 +1,15 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.scanqrcode.Adapter.AdapterTransaksi;
-import com.example.scanqrcode.Model.TransaksiModel;
-import com.example.scanqrcode.Utill.DataApi;
-import com.example.scanqrcode.Utill.InterfaceTransaksi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.todkars.shimmer.ShimmerRecyclerView;
 
@@ -29,7 +23,7 @@ public class TransaksiActivity extends AppCompatActivity  {
 
     private RecyclerView.LayoutManager layoutManager;
     private AdapterTransaksi adapterTrans;
-    private List<TransaksiModel> transaksiModelList;
+    private List<Transaksi> transaksiModelList;
     private InterfaceTransaksi interfaceTransaksi;
     RecyclerView recyclerView;
     FloatingActionButton fabAdd;
@@ -41,9 +35,6 @@ public class TransaksiActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaksi);
 
-        // Method hidenavbar
-
-        hideNavbar();
 
         // Method initilize
 
@@ -81,12 +72,12 @@ public class TransaksiActivity extends AppCompatActivity  {
     // Method untuk memanggi data json
 
     private void tampilkanData() {
-        Call<List<TransaksiModel>> call = interfaceTransaksi.getBarang2();
+        Call<List<Transaksi>> call = interfaceTransaksi.getBarang2();
 
-        call.enqueue(new Callback<List<TransaksiModel>>() {
+        call.enqueue(new Callback<List<Transaksi>>() {
 
             @Override
-            public void onResponse(Call<List<TransaksiModel>> call, Response<List<TransaksiModel>> response) {
+            public void onResponse(Call<List<Transaksi>> call, Response<List<Transaksi>> response) {
 
                 transaksiModelList = response.body();
                 adapterTrans = new AdapterTransaksi(TransaksiActivity.this, transaksiModelList);
@@ -96,7 +87,7 @@ public class TransaksiActivity extends AppCompatActivity  {
 
 
             @Override
-            public void onFailure(Call<List<TransaksiModel>> call, Throwable t) {
+            public void onFailure(Call<List<Transaksi>> call, Throwable t) {
 
                 // Menampilkan toast saat no connection
 

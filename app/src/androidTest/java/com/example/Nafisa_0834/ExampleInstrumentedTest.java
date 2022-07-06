@@ -1,4 +1,4 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
 
 import android.content.Context;
 

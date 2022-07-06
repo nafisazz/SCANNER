@@ -1,4 +1,6 @@
-package com.example.scanqrcode;
+package com.example.Nafisa_0834;
+
+import static com.example.Nafisa_0834.ServerAPI.DATA_API;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +8,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,18 +19,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -89,7 +83,7 @@ public class MediaBarcode extends AppCompatActivity implements ZXingScannerView.
     // method volley
 
     private void getDataBarang(String result){
-        String url="http://192.168.238.178/qrcode/cari_qrcode.php?kode="+result; // Ganti dengan IP address komputer kalian
+        String url=DATA_API + "qrcode/cari_qrcode.php?kode="+result; // Ganti dengan IP address komputer kalian
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.PUT,url,null,
                 new Response.Listener<JSONArray>() {
                     @Override

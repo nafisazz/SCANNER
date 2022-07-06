@@ -1,4 +1,6 @@
-package com.example.scanqrcode.Adapter;
+package com.example.Nafisa_0834;
+
+import static com.example.Nafisa_0834.ServerAPI.DATA_API;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.scanqrcode.Model.TransaksiModel;
-import com.example.scanqrcode.PenjualanActivity;
-import com.example.scanqrcode.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -23,11 +22,11 @@ import java.util.Locale;
 
 public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyViewHolder> {
     Context context;
-    List<TransaksiModel> transaksiModels;
+    List<Transaksi> transaksiModels;
 
 
 
-    public AdapterTransaksi(Context context, List<TransaksiModel> transaksiModels) {
+    public AdapterTransaksi(Context context, List<Transaksi> transaksiModels) {
         this.context = context;
         this.transaksiModels= transaksiModels;
 
@@ -53,7 +52,7 @@ public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyVi
 
             //menapilkan gbr barcode
         Glide.with(context)
-                .load("http://192.168.238.178/qrcode/qr/"+transaksiModels.get(position).getKode()+".png")
+                .load(DATA_API + "qrcode/qr/"+transaksiModels.get(position).getKode()+".png")
                 .thumbnail(0.5f)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.img_brg2);
@@ -67,7 +66,7 @@ public class AdapterTransaksi extends RecyclerView.Adapter<AdapterTransaksi.MyVi
         return transaksiModels.size();
     }
 
-    public void filterList(ArrayList<TransaksiModel> filteredList) {
+    public void filterList(ArrayList<Transaksi> filteredList) {
 
         transaksiModels = filteredList;
         notifyDataSetChanged();

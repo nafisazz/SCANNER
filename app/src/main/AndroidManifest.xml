@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.scanqrcode">
+    package="com.example.Nafisa_0834">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -15,16 +15,16 @@
         android:theme="@style/Theme.ScanQRCode"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".PenjualanActivity"
+            android:name="com.example.Nafisa_0834.PenjualanActivity"
             android:exported="false" />
         <activity
-            android:name=".TransaksiActivity"
+            android:name="com.example.Nafisa_0834.TransaksiActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutActivity"
+            android:name="com.example.Nafisa_0834.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.example.Nafisa_0834.MenuUtamaActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,16 +33,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TambahBarang"
+            android:name="com.example.Nafisa_0834.TambahBarang"
             android:exported="false" />
         <activity
-            android:name=".MediaBarcode"
+            android:name="com.example.Nafisa_0834.MediaBarcode"
             android:exported="false" />
         <activity
-            android:name=".ScanQrCode"
+            android:name="com.example.Nafisa_0834.ScanQrCode"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.Nafisa_0834.BarangActivity"
             android:exported="true" />
     </application>
 

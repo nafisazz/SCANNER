@@ -1,10 +1,10 @@
-package com.example.scanqrcode.Model;
+package com.example.Nafisa_0834;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BarangModel implements Serializable {
+public class Barang implements Serializable {
     @SerializedName("kode")
     String kode;
     @SerializedName("nama_barang")
@@ -13,7 +13,7 @@ public class BarangModel implements Serializable {
     String harga;
 
 
-    public BarangModel(String kode, String nama, String harga) {
+    public Barang(String kode, String nama, String harga) {
         this.kode = kode;
         this.nama = nama;
         this.harga = harga;

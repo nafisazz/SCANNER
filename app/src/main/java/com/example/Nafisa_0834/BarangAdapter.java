@@ -1,4 +1,4 @@
-package com.example.scanqrcode.Adapter;
+package com.example.Nafisa_0834;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,19 +8,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.scanqrcode.Model.BarangModel;
-import com.example.scanqrcode.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.MyViewHolder> {
     Context context;
-    List<BarangModel> barangModels;
+    List<Barang> barangModels;
 
 
 
-    public BarangAdapter(Context context, List<BarangModel> barangModels) {
+    public BarangAdapter(Context context, List<Barang> barangModels) {
          this.context = context;
          this.barangModels= barangModels;
 

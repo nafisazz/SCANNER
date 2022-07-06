@@ -1,10 +1,12 @@
-package com.example.scanqrcode.Utill;
+package com.example.Nafisa_0834;
+
+import static com.example.Nafisa_0834.ServerAPI.DATA_API;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DataApi {
-    public static final String BASE_URL="http://192.168.238.178/";
+    public static final String BASE_URL= DATA_API;
     private static Retrofit retrofit=null;
     public static Retrofit getClient(){
         if (retrofit==null)

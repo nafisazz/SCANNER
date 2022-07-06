@@ -1,6 +1,4 @@
-package com.example.scanqrcode.Utill;
-
-import com.example.scanqrcode.Model.TransaksiModel;
+package com.example.Nafisa_0834;
 
 import java.util.List;
 
@@ -15,12 +13,12 @@ import retrofit2.http.Query;
 public interface InterfaceTransaksi {
     // get untuk menganbil data
     @GET("qrcode/")
-    Call<List<TransaksiModel>> getBarang2();
+    Call<List<Transaksi>> getBarang2();
     @FormUrlEncoded
     @POST("qrcode/transaksi.php")
-    Call<TransaksiModel> simpanPenjualan(@Field("kode") String kode,
-                                         @Field("jumlah") String jumlah);
+    Call<Transaksi> simpanPenjualan(@Field("kode") String kode,
+                                    @Field("jumlah") String jumlah);
 
     @DELETE("qrcode/")
-    Call<TransaksiModel> deleteBarang(@Query("kode") String kode);
+    Call<Transaksi> deleteBarang(@Query("kode") String kode);
 }
