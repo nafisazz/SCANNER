@@ -27,6 +27,7 @@ public class PenjualanActivity extends AppCompatActivity {
     EditText hrg_brg;
     EditText jml_brg;
     EditText satuan_brg;
+    Integer total;
     String kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_barg, tanggal, waktu;
 
     Button save;
@@ -66,6 +67,8 @@ public class PenjualanActivity extends AppCompatActivity {
         jumlah_brg = jml_brg.getText().toString();
         satuan_barg = satuan_brg.getText().toString();
 
+        total = (Integer.parseInt(jumlah_brg) ) - 1 ;
+
     }
 
     private void disableEdittext() {
@@ -100,7 +103,7 @@ public class PenjualanActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     // Memanggil method simpan ke firebase
-                    simpanPenjualan(kode_brg, nama_brg, harga_brg, jumlah_brg, satuan_barg, tanggal, waktu);
+                    simpanPenjualan(kode_brg, nama_brg, harga_brg, total, satuan_barg, tanggal, waktu);
 
                     Toast.makeText(PenjualanActivity.this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PenjualanActivity.this, TransaksiActivity.class));
@@ -120,13 +123,13 @@ public class PenjualanActivity extends AppCompatActivity {
 
     // Method simpan data ke dalam firebase
 
-    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, String jumlah_brg, String satuan_barg, String tanggal, String waktu) {
+    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, Integer total, String satuan_barg, String tanggal, String waktu) {
         String penjualan = refPenjualan.push().getKey();
 
         refPenjualan.child(penjualan).child("kode").setValue(kode_brg);
         refPenjualan.child(penjualan).child("nama").setValue(nama_brg);
         refPenjualan.child(penjualan).child("harga").setValue(harga_brg);
-        refPenjualan.child(penjualan).child("jumlah").setValue(jumlah_brg);
+        refPenjualan.child(penjualan).child("jumlah").setValue(total);
         refPenjualan.child(penjualan).child("satuan").setValue(satuan_barg);
         refPenjualan.child(penjualan).child("tanggal").setValue(tanggal);
         refPenjualan.child(penjualan).child("waktu").setValue(waktu);
