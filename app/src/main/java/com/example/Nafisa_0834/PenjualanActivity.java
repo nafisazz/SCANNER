@@ -192,7 +192,7 @@ private void validasiTransaksi() {
                 if (response.isSuccessful()) {
 
                     // Memanggil method simpan ke firebase
-                    simpanPenjualan(kode_brg, nama_brg, harga_brg, totalBarang, total, satuan_barg, tanggal, waktu);
+                    simpanPenjualan(kode_brg, nama_brg, harga_brg, totalBarang, jumlahPenjualan, total, satuan_barg, tanggal, waktu);
 
                     refBarang.child(kode_brg).child("jumlah").setValue(stokBarang);
 
@@ -219,13 +219,13 @@ private void validasiTransaksi() {
 
     // Method simpan data ke dalam firebase
 
-    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, Integer total, Integer totalPembelian, String satuan_barg,  String tanggal, String waktu) {
+    private void simpanPenjualan(String kode_brg, String nama_brg, String harga_brg, Integer total, Integer jumlah_penjualan, Integer totalPembelian, String satuan_barg,  String tanggal, String waktu) {
         String penjualan = refPenjualan.push().getKey();
-
         refPenjualan.child(penjualan).child("kode").setValue(kode_brg);
         refPenjualan.child(penjualan).child("nama").setValue(nama_brg);
         refPenjualan.child(penjualan).child("harga").setValue(harga_brg);
         refPenjualan.child(penjualan).child("Stok").setValue(total);
+        refPenjualan.child(penjualan).child("Jumlah Penjualan").setValue(jumlah_penjualan);
         refPenjualan.child(penjualan).child("Total Pembelian").setValue(totalPembelian);
         refPenjualan.child(penjualan).child("satuan").setValue(satuan_barg);
         refPenjualan.child(penjualan).child("tanggal").setValue(tanggal);
