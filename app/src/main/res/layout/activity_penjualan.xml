@@ -7,18 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".PenjualanActivity">
 
-    <com.google.android.material.button.MaterialButton
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginRight="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:onClick="validasi"
-        android:text="Simpan"
-
-        />
 
 
     <LinearLayout
@@ -152,6 +141,14 @@
             android:textSize="17sp"
             android:fontFamily="@font/popmed"
             />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:background="@color/transparent"
+            android:editable="false"
+            android:fontFamily="@font/popmed"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tv_total"
