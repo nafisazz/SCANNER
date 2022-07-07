@@ -63,6 +63,7 @@ public class PenjualanActivity extends AppCompatActivity {
 
 
 
+        // ambil waktu saat ini
         getDateTime();
 
         // Disable Edittext
@@ -80,9 +81,11 @@ public class PenjualanActivity extends AppCompatActivity {
 
         tv_total = findViewById(R.id.tv_total);
 
-        validasiTransaksi();
 
+        tv_total.setText(intent.getStringExtra("hrg_brg2"));//
 
+        // validasi dan menghitung total
+        validasiPenjualan();
 
 
 
@@ -90,68 +93,98 @@ public class PenjualanActivity extends AppCompatActivity {
 
     }
 
-
-private void validasiTransaksi() {
-    // Menghitung total harga
-    jumlah_penjualan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
+    private void validasiPenjualan() {
+        jumlah_penjualan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
 
-            // Jika edittetxt fokus
-            if (hasFocus){
                 Intent intent = getIntent();
-                jml_brg.setText(intent.getStringExtra("jml_brg2"));
+                jml_brg.setText(intent.getStringExtra("jml_brg2"));//
 
-            } else {
 
-                if (jumlah_penjualan.getText().toString().equals("")){
-                    total = 0;
-                    totalBarang = 0;
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                jmlPenjualan = jumlah_penjualan.getText().toString();
+                if (jumlah_penjualan.getText().toString().equals("")) {
+                    Intent intent = getIntent();
+                    jml_brg.setText(intent.getStringExtra("jml_brg2"));//
+                    jmlPenjualan = "0";
+
+
                 }
 
 
-                else {
+            }
 
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (jumlah_penjualan.getText().toString().equals("")) {
+
+
+                    total = 0;
+                    totalBarang = 0;
+                    jumlahPenjualan = 0;
+
+                    Intent intent = getIntent();
+                    jml_brg.setText(intent.getStringExtra("jml_brg2"));//
+
+                }
+                else {
                     jumlahPenjualan = Integer.parseInt(jumlah_penjualan.getText().toString());
-                    totalBarang = Integer.parseInt(jml_brg.getText().toString())  - jumlahPenjualan;
+                    totalBarang = Integer.parseInt(jml_brg.getText().toString()) - jumlahPenjualan;
+
+
                     total = jumlahPenjualan * Integer.parseInt(hrg_brg.getText().toString());
 
-                    if(Integer.parseInt(jml_brg.getText().toString()) < jumlahPenjualan )  {
-                        Intent intent = getIntent();
-                        Toast.makeText(PenjualanActivity.this, "Jumlah penjulan melebihi stok!", Toast.LENGTH_LONG).show();
-                        jumlah_penjualan.setText("");
-                        jml_brg.setText(intent.getStringExtra("jml_brg2"));
-                        tv_total.setText("Jumlah melebihi stok");
-                        save.setClickable(false);
-                        jumlah_penjualan.setError("Jumlah barang melebihi stok");
-                    }
-                    else {
-                        save.setClickable(true);
-                        tv_total.setText(String.valueOf(total));
-                        jml_brg.setText(String.valueOf(totalBarang));
-                        stokBarang = jml_brg.getText().toString();
-                        tvTotal2.setText(String.valueOf(totalBarang));
-                        tvTotal2.setVisibility(View.GONE);
-                        stokFinal = tvTotal2.getText().toString();
+                    tv_total.setText(String.valueOf(total));
+                    jml_brg.setText(String.valueOf(totalBarang));
+
+                }
+
+                if (jumlah_penjualan.getText().toString().isEmpty()){
+                    Intent intent = getIntent();
+                    jml_brg.setText(jumlah_brg);//
+                    jumlah_penjualan.setError("Jumlah penjualan tidak boleh kosong");
+                    tv_total.setText(intent.getStringExtra("hrg_brg2"));//
 
 
-                    }
+                }
 
+
+
+                if(Integer.parseInt(jml_brg.getText().toString()) < 0)  {
+                    Intent intent = getIntent();
+                    Toast.makeText(PenjualanActivity.this, "Jumlah penjulan melebihi stok!", Toast.LENGTH_LONG).show();
+
+                    jml_brg.setText(intent.getStringExtra("jml_brg2"));//
+
+                    jml_brg.setText(intent.getStringExtra("jml_brg2"));
+                    tv_total.setText("Jumlah melebihi stok");
+                    save.setClickable(false);
+                    jumlah_penjualan.setError("Jumlah barang melebihi stok");
+                }
+
+                else {
+                    save.setClickable(true);
+                    tv_total.setText(String.valueOf(total));
+                    jml_brg.setText(String.valueOf(totalBarang));
+                    stokBarang = jml_brg.getText().toString();
+                    tvTotal2.setText(String.valueOf(totalBarang));
+                    tvTotal2.setVisibility(View.GONE);
+                    stokFinal = tvTotal2.getText().toString();
 
 
                 }
 
             }
-        }
-    });
 
-
-
-}
-
+        });
+    }
 
 
     private void disableEdittext() {
@@ -178,6 +211,7 @@ private void validasiTransaksi() {
         satuan_brg = findViewById(R.id.inSatuanBrg);
         save = findViewById(R.id.btnSave);
         tv_total = findViewById(R.id.tv_total);
+
         tvTotal2 =  findViewById(R.id.tv_total2);
         jumlah_penjualan = findViewById(R.id.inJumlahPenjualan);
     }
@@ -195,10 +229,6 @@ private void validasiTransaksi() {
                     simpanPenjualan(kode_brg, nama_brg, harga_brg, totalBarang, jumlahPenjualan, total, satuan_barg, tanggal, waktu);
 
                     refBarang.child(kode_brg).child("jumlah").setValue(stokBarang);
-
-//                    refBarang.child(kode_brg).child("jumlah").setValue(totalBarang);
-//                    refBarang.child("Barang").child(kode_brg).child("jumlah").setValue(totalBarang);
-//                    mDatabaseRef.child(kode_brg).child("jumlah").setValue(totalBarang);
 
 
                     Toast.makeText(PenjualanActivity.this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show();
