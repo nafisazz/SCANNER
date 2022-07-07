@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".PenjualanActivity">
 
+    <com.google.android.material.button.MaterialButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:onClick="validasi"
+        android:text="Simpan"
+
+        />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -93,7 +106,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="17sp"
-
             android:fontFamily="@font/popmed"
             android:inputType="textPersonName" />
 
@@ -156,10 +168,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="total"
+            android:visibility="gone"
             android:ems="10"
             android:textColor="@color/main"
             android:textSize="@dimen/_17sdp"
             android:fontFamily="@font/popmed" />
+
+
+
 
     </LinearLayout>
 

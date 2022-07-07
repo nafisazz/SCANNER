@@ -42,6 +42,8 @@ public class PenjualanActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference refPenjualan = database.getReference("Penjualan");
+    DatabaseReference refBarang = database.getReference("Barang");
+    DatabaseReference mDatabaseRef = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,63 +80,9 @@ public class PenjualanActivity extends AppCompatActivity {
 
         tv_total = findViewById(R.id.tv_total);
 
+        validasiTransaksi();
 
 
-
-        // Menghitung total harga
-        jumlah_penjualan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-
-                // Jika edittetxt fokus
-                if (hasFocus){
-                    jml_brg.setText(intent.getStringExtra("jml_brg2"));
-
-                } else {
-
-                    if (jumlah_penjualan.getText().toString().equals("")){
-                        total = 0;
-                        totalBarang = 0;
-                    }
-
-
-                    else {
-
-                        jumlahPenjualan = Integer.parseInt(jumlah_penjualan.getText().toString());
-                        totalBarang = Integer.parseInt(jml_brg.getText().toString())  - jumlahPenjualan;
-                        total = jumlahPenjualan * Integer.parseInt(hrg_brg.getText().toString());
-
-                      if(Integer.parseInt(jml_brg.getText().toString()) < jumlahPenjualan )  {
-                          Toast.makeText(PenjualanActivity.this, "Jumlah barang melebihi stok", Toast.LENGTH_LONG).show();
-                          jumlah_penjualan.setText("Stok tidak mencukupi");
-                          jumlah_penjualan.setError("Jumlah barang melebihi stok");
-                          jml_brg.setText(intent.getStringExtra("jml_brg2"));
-                          save.setClickable(false);
-                          tv_total.setText("Jumlah melebihi stok");
-                          tvTotal2.setVisibility(View.GONE);
-
-                        }
-                        else {
-                          save.setClickable(true);
-                          tv_total.setText(String.valueOf(total));
-                          jml_brg.setText(String.valueOf(totalBarang));
-                          stokBarang = jml_brg.getText().toString();
-                          tvTotal2.setText(String.valueOf(totalBarang));
-                          tvTotal2.setVisibility(View.GONE);
-                          stokFinal = tvTotal2.getText().toString();
-
-                      }
-
-
-
-                    }
-
-                }
-            }
-        });
 
 
 
@@ -143,6 +91,66 @@ public class PenjualanActivity extends AppCompatActivity {
     }
 
 
+private void validasiTransaksi() {
+    // Menghitung total harga
+    jumlah_penjualan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+
+
+            // Jika edittetxt fokus
+            if (hasFocus){
+                Intent intent = getIntent();
+                jml_brg.setText(intent.getStringExtra("jml_brg2"));
+
+            } else {
+
+                if (jumlah_penjualan.getText().toString().equals("")){
+                    total = 0;
+                    totalBarang = 0;
+                }
+
+
+                else {
+
+                    jumlahPenjualan = Integer.parseInt(jumlah_penjualan.getText().toString());
+                    totalBarang = Integer.parseInt(jml_brg.getText().toString())  - jumlahPenjualan;
+                    total = jumlahPenjualan * Integer.parseInt(hrg_brg.getText().toString());
+
+                    if(Integer.parseInt(jml_brg.getText().toString()) < jumlahPenjualan )  {
+                        Intent intent = getIntent();
+                        Toast.makeText(PenjualanActivity.this, "Jumlah penjulan melebihi stok!", Toast.LENGTH_LONG).show();
+                        jumlah_penjualan.setText("");
+                        jml_brg.setText(intent.getStringExtra("jml_brg2"));
+                        tv_total.setText("Jumlah melebihi stok");
+                        save.setClickable(false);
+                        jumlah_penjualan.setError("Jumlah barang melebihi stok");
+                    }
+                    else {
+                        save.setClickable(true);
+                        tv_total.setText(String.valueOf(total));
+                        jml_brg.setText(String.valueOf(totalBarang));
+                        stokBarang = jml_brg.getText().toString();
+                        tvTotal2.setText(String.valueOf(totalBarang));
+                        tvTotal2.setVisibility(View.GONE);
+                        stokFinal = tvTotal2.getText().toString();
+
+
+                    }
+
+
+
+                }
+
+            }
+        }
+    });
+
+
+
+}
 
 
 
@@ -175,13 +183,22 @@ public class PenjualanActivity extends AppCompatActivity {
     }
 
     public void simpandata(View view) {
+
         DataApi.getClient().create(InterfaceTransaksi.class).simpanPenjualan(kode_brg, stokBarang).enqueue(new Callback<Transaksi>() {
             @Override
             public void onResponse(Call<Transaksi> call, Response<Transaksi> response) {
+
+
                 if (response.isSuccessful()) {
 
                     // Memanggil method simpan ke firebase
                     simpanPenjualan(kode_brg, nama_brg, harga_brg, totalBarang, total, satuan_barg, tanggal, waktu);
+
+                    refBarang.child(kode_brg).child("jumlah").setValue(stokBarang);
+
+//                    refBarang.child(kode_brg).child("jumlah").setValue(totalBarang);
+//                    refBarang.child("Barang").child(kode_brg).child("jumlah").setValue(totalBarang);
+//                    mDatabaseRef.child(kode_brg).child("jumlah").setValue(totalBarang);
 
 
                     Toast.makeText(PenjualanActivity.this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show();

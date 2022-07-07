@@ -77,13 +77,13 @@ public class TambahBarang extends AppCompatActivity {
 
     //method firebase
     private void tambahData(String kode, String nama, String harga, String jumlah, String satuan) {
-        String barang = refBarang.push().getKey();
 
-        refBarang.child(barang).child("kode").setValue(kode);
-        refBarang.child(barang).child("nama").setValue(nama);
-        refBarang.child(barang).child("harga").setValue(harga);
-        refBarang.child(barang).child("jumlah").setValue(jumlah);
-        refBarang.child(barang).child("satuan").setValue(satuan);
+
+        refBarang.child(kode).child("kode").setValue(kode);
+        refBarang.child(kode).child("nama").setValue(nama);
+        refBarang.child(kode).child("harga").setValue(harga);
+        refBarang.child(kode).child("jumlah").setValue(jumlah);
+        refBarang.child(kode).child("satuan").setValue(satuan);
         Toast.makeText(TambahBarang.this, "Berhasil menambahkan data ke firebase", Toast.LENGTH_LONG).show();
     }
 
