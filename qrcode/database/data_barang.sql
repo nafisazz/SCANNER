@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2022 at 07:50 AM
+-- Generation Time: Jul 07, 2022 at 08:12 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -30,16 +30,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `data_barang` (
   `kode` varchar(50) NOT NULL,
   `nama_barang` varchar(80) NOT NULL,
-  `harga` int(10) NOT NULL
+  `harga` int(10) NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `satuan` varchar(50) NOT NULL,
+  `image` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `data_barang`
 --
 
-INSERT INTO `data_barang` (`kode`, `nama_barang`, `harga`) VALUES
-('b0001', 'Iphone 13 Pro', 18000000),
-('b00345', 'AirPods pro', 3500000);
+INSERT INTO `data_barang` (`kode`, `nama_barang`, `harga`, `jumlah`, `satuan`, `image`) VALUES
+('32h23sda', 'sepeda motor', 23000000, 2, 'unit', '32h23sda.png'),
+('7878', 'Thalita', 1990000, 1, 'Manusia', '7878.png'),
+('b009029', 'Handphone', 2000000, 47, 'Unit', 'b009029.png'),
+('b090343', 'Nafisa khally', 2000, 1, 'manusia', 'b090343.png'),
+('b98334', 'laptop', 22, 10, 'unit', 'b98334.png'),
+('ksods', 'Kacang', 2000, 95, 'Pcds', 'ksods.png'),
+('sdfdsf', 'gambar', 22222, 233, 'sda', 'sdfdsf.png');
 
 --
 -- Indexes for dumped tables
