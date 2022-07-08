@@ -1,5 +1,8 @@
 # ScanQrCode ✨
 
+![image](https://user-images.githubusercontent.com/79959818/177892968-ceeb764b-3306-4d4e-9f60-ead70323df0c.png)
+
+
 ![image](https://user-images.githubusercontent.com/79959818/172974274-1348b189-a67e-4b0a-9603-f7d38fdc262e.png)
 
 
